@@ -534,10 +534,10 @@ fetch('waterbodies.geojson')
             pane: 'water',
 
             style: {
-                color: '#42a5f5',
-                weight: 1,
-                fillColor: '#90caf9',
-                fillOpacity: 0.7
+                color: '#c4d4e2',
+                weight: 0.5,
+                fillColor: '#d8e3ed',
+                fillOpacity: 1
             }
 
         });
@@ -561,9 +561,9 @@ fetch('waterways.geojson')
             pane: 'waterways',
 
             style: {
-                color: '#1976d2',
-                weight: 2,
-                opacity: 0.9
+                color: '#c4d4e2',
+                weight: 1.5,
+                opacity: 1
             }
 
         });
