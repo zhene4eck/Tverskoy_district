@@ -38,7 +38,7 @@ map.createPane('bikeRoutes');
 map.createPane('bikeParking');
 map.createPane('heritage');
 
-map.getPane('boundary').style.zIndex = 200;
+map.getPane('boundary').style.zIndex = 295;
 map.getPane('landuse').style.zIndex = 210;
 map.getPane('greenery').style.zIndex = 220;
 map.getPane('water').style.zIndex = 230;
@@ -848,10 +848,14 @@ fetch('district_boundary.geojson')
             pane: 'boundary',
 
             style: {
-                color: '#4a148c',
-                weight: 3,
+                color: '#a8aeb4',
+                weight: 2,
                 opacity: 1,
-                fillOpacity: 0
+
+                fillColor: '#fafaf8',
+                fillOpacity: 0.05,
+
+                dashArray: '12 4 2 4 2 4'
             },
 
             onEachFeature: function(feature, layer) {
