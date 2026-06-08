@@ -73,14 +73,37 @@ L.tileLayer(
 
 function getHeritageIcon(Subtype, Subsubtype) {
 
-    console.log(Subtype, '|', Subsubtype);
-    
-    let iconNumber = 1;
+    const name = Subsubtype.trim();
 
     // Федеральные объекты
-    if (Subtype === 'Федеральный' && Subsubtype.trim() === 'Московский Кремль') iconNumber = 14;
-    else if (Subtype === 'Федеральный' && Subsubtype.trim() === 'Храм Василия Блаженного') iconNumber = 15;
-    else if (Subtype === 'Федеральный' && Subsubtype.trim() === 'Большой театр России') iconNumber = 16;
+    if (Subtype === 'Федеральный' && name === 'Московский Кремль') {
+        return L.icon({
+            iconUrl: 'icons/14.svg',
+            iconSize: [18, 18],
+            iconAnchor: [11, 22],
+            popupAnchor: [0, -22]
+        });
+    }
+
+    if (Subtype === 'Федеральный' && name === 'Храм Василия Блаженного') {
+        return L.icon({
+            iconUrl: 'icons/15.svg',
+            iconSize: [18, 18],
+            iconAnchor: [11, 22],
+            popupAnchor: [0, -22]
+        });
+    }
+
+    if (Subtype === 'Федеральный' && name === 'Большой театр России') {
+        return L.icon({
+            iconUrl: 'icons/16.svg',
+            iconSize: [18, 18],
+            iconAnchor: [11, 22],
+            popupAnchor: [0, -22]
+        });
+    }
+
+    let iconNumber = 1;
 
     if (Subtype === 'Ансамбли' && Subsubtype === 'объекты садово-паркового искусства') iconNumber = 1;
     else if (Subtype === 'Ансамбли' && Subsubtype === 'религиозные ансамбли') iconNumber = 2;
@@ -99,7 +122,7 @@ function getHeritageIcon(Subtype, Subsubtype) {
     else if (Subtype === 'Памятники' && Subsubtype === 'сооружения') iconNumber = 13;
         
     // ПО УМОЛЧАНИЮ
-    else iconNumber = 16;
+    else iconNumber = 13;
 
     return L.icon({
         iconUrl: `icons/${iconNumber}.svg`,
