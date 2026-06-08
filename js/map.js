@@ -465,3 +465,91 @@ fetch('greenery.geojson')
     .catch(error => {
         console.error('Ошибка растительности:', error);
     });
+
+// =======================
+// ТЕРРИТОРИИ
+// =======================
+
+fetch('landuse.geojson')
+    .then(response => response.json())
+    .then(data => {
+
+        const landuseLayer = L.geoJSON(data, {
+
+            style: function(feature) {
+
+                const type = feature.properties.landuse;
+
+                switch(type) {
+
+                    case 'residential':
+                        return {
+                            color: '#d6c7a1',
+                            fillColor: '#e8dcc0',
+                            fillOpacity: 0.4,
+                            weight: 0.5
+                        };
+
+                    case 'commercial':
+                        return {
+                            color: '#c5cae9',
+                            fillColor: '#9fa8da',
+                            fillOpacity: 0.4,
+                            weight: 0.5
+                        };
+
+                    case 'industrial':
+                        return {
+                            color: '#b0bec5',
+                            fillColor: '#90a4ae',
+                            fillOpacity: 0.5,
+                            weight: 0.5
+                        };
+
+                    case 'railway':
+                        return {
+                            color: '#9e9e9e',
+                            fillColor: '#bdbdbd',
+                            fillOpacity: 0.5,
+                            weight: 0.5
+                        };
+
+                    case 'grass':
+                    case 'recreation_ground':
+                        return {
+                            color: '#66bb6a',
+                            fillColor: '#a5d6a7',
+                            fillOpacity: 0.4,
+                            weight: 0.5
+                        };
+
+                    default:
+                        return {
+                            color: '#cccccc',
+                            fillColor: '#e0e0e0',
+                            fillOpacity: 0.3,
+                            weight: 0.5
+                        };
+                }
+
+            },
+
+            onEachFeature: function(feature, layer) {
+
+                layer.bindPopup(`
+                    <div style="font-family:Segoe UI;">
+                        <b>Территория</b><br>
+                        Тип: ${feature.properties.landuse || 'не указан'}
+                    </div>
+                `);
+
+            }
+
+        });
+
+        landuseLayer.addTo(map);
+
+    })
+    .catch(error => {
+        console.error('Ошибка территорий:', error);
+    });
