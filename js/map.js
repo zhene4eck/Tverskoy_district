@@ -357,7 +357,7 @@ fetch('stops.geojson')
 
         });
 
-        if (map.getZoom() >= 16) {
+        if (map.getZoom() >= 18) {
             map.addLayer(stopsLayer);
         }
 
