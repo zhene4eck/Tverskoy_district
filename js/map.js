@@ -720,6 +720,25 @@ fetch('buildings.geojson')
 
         buildingsLayer.addTo(map);
 
+        function updateBuildingsVisibility() {
+
+            const visible = map.getZoom() >= 13;
+
+            buildingsLayer.eachLayer(function(layer) {
+
+                layer.setStyle({
+                    opacity: visible ? 1 : 0,
+                    fillOpacity: visible ? 1 : 0
+                });
+
+            });
+
+        }
+
+        updateBuildingsVisibility();
+
+        map.on('zoomend', updateBuildingsVisibility);
+
     })
     .catch(error => {
         console.error('Ошибка зданий:', error);
