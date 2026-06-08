@@ -263,3 +263,68 @@ fetch('address_points.geojson')
     .catch(error => {
         console.error('Ошибка адресных точек:', error);
     });
+
+// =======================
+// ДОРОГИ
+// =======================
+
+fetch('roads.geojson')
+    .then(response => response.json())
+    .then(data => {
+
+        const roadsLayer = L.geoJSON(data, {
+
+            style: function(feature) {
+
+                const roadType = feature.properties.highway;
+
+                switch (roadType) {
+
+                    case 'primary':
+                        return {
+                            color: '#d32f2f',
+                            weight: 4
+                        };
+
+                    case 'secondary':
+                        return {
+                            color: '#f57c00',
+                            weight: 3
+                        };
+
+                    case 'tertiary':
+                        return {
+                            color: '#757575',
+                            weight: 2
+                        };
+
+                    default:
+                        return {
+                            color: '#9e9e9e',
+                            weight: 1
+                        };
+                }
+
+            },
+
+            onEachFeature: function(feature, layer) {
+
+                const p = feature.properties;
+
+                layer.bindPopup(`
+                    <div style="font-family:Segoe UI;">
+                        <b>${p.name || 'Без названия'}</b><br>
+                        Тип: ${p.highway || ''}
+                    </div>
+                `);
+
+            }
+
+        });
+
+        roadsLayer.addTo(map);
+
+    })
+    .catch(error => {
+        console.error('Ошибка дорог:', error);
+    });
