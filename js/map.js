@@ -588,12 +588,34 @@ fetch('greenery.geojson')
 
             style: function(feature) {
 
-                return {
-                    color: '#43a047',
-                    weight: 1,
-                    fillColor: '#81c784',
-                    fillOpacity: 0.5
-                };
+                const code = feature.properties.Code;
+
+                switch(code) {
+
+                    case 'Д1':
+                        return {
+                            fillColor: '#c1e3a5',
+                            color: '#9fc77d',
+                            weight: 0.5,
+                            fillOpacity: 1
+                        };
+
+                    case 'Д2':
+                        return {
+                            fillColor: '#92c86d',
+                            color: '#6ca64a',
+                            weight: 0.5,
+                            fillOpacity: 1
+                        };
+
+                    default:
+                        return {
+                            fillColor: '#c1e3a5',
+                            color: '#9fc77d',
+                            weight: 0.5,
+                            fillOpacity: 1
+                        };
+                }
 
             },
 
@@ -604,7 +626,7 @@ fetch('greenery.geojson')
                 layer.bindPopup(`
                     <div style="font-family:Segoe UI;">
                         <b>${p.Name || 'Зелёная территория'}</b><br>
-                        Тип: ${p['Code OSM'] || ''}
+                        Код: ${p.Code || ''}
                     </div>
                 `);
 
@@ -618,7 +640,6 @@ fetch('greenery.geojson')
     .catch(error => {
         console.error('Ошибка растительности:', error);
     });
-
 // =======================
 // ТЕРРИТОРИИ
 // =======================
