@@ -223,8 +223,12 @@ fetch('36.geojson')
                     <div style="
                         background:#fafafa;
                         border-left:4px solid #1565c0;
-                        padding:8px;
+                        padding:10px;
                         font-size:12px;
+                        line-height:1.5;
+                        box-sizing:border-box;
+                        width:100%;
+                        border-radius:0 8px 8px 0;
                     ">
                         <b>Подробнее:</b><br>
                         ${p.Full_Name || ''}
