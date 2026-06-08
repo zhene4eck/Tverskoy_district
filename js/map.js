@@ -124,8 +124,10 @@ fetch('36.geojson')
 fetch('bike_parking.geojson')
     .then(response => response.json())
     .then(data => {
-
-        const bikeParking = L.geoJSON(data, {
+        
+         console.log("ВЕЛОПАРКОВКИ ЗАГРУЖАЮТСЯ");
+         console.log(data);
+         const bikeParking = L.geoJSON(data, {
 
             pointToLayer: function(feature, latlng) {
 
@@ -147,3 +149,11 @@ fetch('bike_parking.geojson')
     .catch(error => {
         console.error('Ошибка велопарковок:', error);
     });
+
+
+
+
+
+
+
+
