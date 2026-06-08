@@ -558,43 +558,7 @@ fetch('roads.geojson')
 
         });
 
-        // Масштабная генерализация
-        function updateRoadVisibility() {
-
-            roadsLayer.eachLayer(function(layer) {
-
-                const code = layer.feature.properties.Code;
-                const zoom = map.getZoom();
-
-                let visible = false;
-
-                // Магистральные
-                if (code === 'В1' || code === 'В3') {
-                    visible = true;
-                }
-
-                // Районные и местные
-                else if (code === 'В4' || code === 'В5') {
-                    visible = zoom >= 13;
-                }
-
-                // Внутриквартальные и пешеходные
-                else if (code === 'В6' || code === 'В7') {
-                    visible = zoom >= 15;
-                }
-
-                layer.setStyle({
-                    opacity: visible ? 1 : 0
-                });
-
-            });
-
-        }
-
-        updateRoadVisibility();
-
-        map.on('zoomend', updateRoadVisibility);
-
+        
     })
     .catch(error => {
         console.error('Ошибка дорог:', error);
