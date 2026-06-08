@@ -360,8 +360,6 @@ fetch('address_points.geojson')
 
         });
 
-        addressLayer.addTo(map);
-
         function updateAddressVisibility() {
 
             if (map.getZoom() >= 17) {
