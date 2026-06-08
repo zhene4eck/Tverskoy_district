@@ -30,7 +30,12 @@ map.createPane('landuse');
 map.createPane('greenery');
 map.createPane('water');
 map.createPane('waterways');
-map.createPane('roads');
+map.createPane('roads_v1');
+map.createPane('roads_v3');
+map.createPane('roads_v4');
+map.createPane('roads_v5');
+map.createPane('roads_v6');
+map.createPane('roads_v7');
 map.createPane('buildings');
 map.createPane('addresses');
 map.createPane('stops');
@@ -43,7 +48,12 @@ map.getPane('landuse').style.zIndex = 210;
 map.getPane('greenery').style.zIndex = 220;
 map.getPane('water').style.zIndex = 230;
 map.getPane('waterways').style.zIndex = 240;
-map.getPane('roads').style.zIndex = 250;
+map.getPane('roads_v7').style.zIndex = 250;
+map.getPane('roads_v6').style.zIndex = 251;
+map.getPane('roads_v5').style.zIndex = 252;
+map.getPane('roads_v4').style.zIndex = 253;
+map.getPane('roads_v3').style.zIndex = 254;
+map.getPane('roads_v1').style.zIndex = 255;
 map.getPane('buildings').style.zIndex = 260;
 map.getPane('addresses').style.zIndex = 270;
 map.getPane('stops').style.zIndex = 280;
@@ -457,57 +467,65 @@ fetch('roads.geojson')
     .then(data => {
 
         roadsLayer = L.geoJSON(data, {
+
             pane: 'roads',
 
             style: function(feature) {
 
-    const code = feature.properties.Code;
+                const code = feature.properties.Code;
 
-   switch(code) {
+                switch(code) {
 
-    // Магистральные
-    case 'В1':
-    case 'В3':
-        return {
-            color: '#6f767c',
-            weight: 5
-        };
+                    // Магистральные
+                    case 'В1':
+                    case 'В3':
+                        return {
+                            color: '#6f767c',
+                            weight: 5,
+                            opacity: 1
+                        };
 
-    // Районные
-    case 'В4':
-        return {
-            color: '#8e959b',
-            weight: 4
-        };
+                    // Районные
+                    case 'В4':
+                        return {
+                            color: '#8e959b',
+                            weight: 4,
+                            opacity: 1
+                        };
 
-    // Местные
-    case 'В5':
-        return {
-            color: '#aeb5ba',
-            weight: 3
-        };
+                    // Местные
+                    case 'В5':
+                        return {
+                            color: '#aeb5ba',
+                            weight: 3,
+                            opacity: 1
+                        };
 
-    // Внутриквартальные
-    case 'В6':
-        return {
-            color: '#c9ced2',
-            weight: 2
-        };
+                    // Внутриквартальные
+                    case 'В6':
+                        return {
+                            color: '#c9ced2',
+                            weight: 2,
+                            opacity: 1
+                        };
 
-    // Пешеходные
-    case 'В7':
-        return {
-            color: '#e0e4e7',
-            weight: 1
-        };
+                    // Пешеходные
+                    case 'В7':
+                        return {
+                            color: '#e0e4e7',
+                            weight: 1,
+                            opacity: 1
+                        };
 
-    default:
-        return {
-            color: '#aeb5ba',
-            weight: 2
-        };
-}
-},
+                    default:
+                        return {
+                            color: '#aeb5ba',
+                            weight: 2,
+                            opacity: 1
+                        };
+                }
+
+            },
 
             onEachFeature: function(feature, layer) {
 
@@ -526,6 +544,21 @@ fetch('roads.geojson')
 
         roadsLayer.addTo(map);
 
+        // Порядок отрисовки дорог
+        roadsLayer.eachLayer(function(layer) {
+
+            const code = layer.feature.properties.Code;
+
+            if (code === 'В7') layer.bringToBack();
+            else if (code === 'В6') layer.bringToFront();
+            else if (code === 'В5') layer.bringToFront();
+            else if (code === 'В4') layer.bringToFront();
+            else if (code === 'В3') layer.bringToFront();
+            else if (code === 'В1') layer.bringToFront();
+
+        });
+
+        // Масштабная генерализация
         function updateRoadVisibility() {
 
             roadsLayer.eachLayer(function(layer) {
