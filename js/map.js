@@ -173,5 +173,51 @@ fetch('bike_routes.geojson')
         console.error('Ошибка веломаршрутов:', error);
     });
 
+// =======================
+// ОСТАНОВКИ ОБЩЕСТВЕННОГО ТРАНСПОРТА
+// =======================
+
+fetch('stops.geojson')
+    .then(response => response.json())
+    .then(data => {
+
+        const stopsLayer = L.geoJSON(data, {
+
+            style: {
+                color: '#f57c00'
+            },
+
+            pointToLayer: function(feature, latlng) {
+
+                return L.circleMarker(latlng, {
+                    radius: 6,
+                    color: '#f57c00',
+                    fillColor: '#ff9800',
+                    fillOpacity: 0.9,
+                    weight: 1
+                });
+
+            },
+
+            onEachFeature: function(feature, layer) {
+
+                const p = feature.properties;
+
+                layer.bindPopup(`
+                    <div style="font-family:Segoe UI, Arial, sans-serif;">
+                        <b>${p.Name || 'Остановка'}</b>
+                    </div>
+                `);
+
+            }
+
+        });
+
+        stopsLayer.addTo(map);
+
+    })
+    .catch(error => {
+        console.error('Ошибка остановок:', error);
+    });
 
 
