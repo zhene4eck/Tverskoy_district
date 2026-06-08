@@ -48,6 +48,7 @@ fetch('36.geojson')
     .then(data => {
 
         const heritageLayer = L.geoJSON(data, {
+            pane: 'heritage',
 
             onEachFeature: function(feature, layer) {
 
@@ -156,6 +157,7 @@ fetch('bike_parking.geojson')
     .then(data => {
         
          const bikeParking = L.geoJSON(data, {
+            pane: 'bikeParking',
 
             pointToLayer: function(feature, latlng) {
 
@@ -187,6 +189,7 @@ fetch('bike_routes.geojson')
     .then(data => {
 
         const bikeRoutes = L.geoJSON(data, {
+            pane: 'bikeRoutes',
 
             style: {
                 color: '#1976d2',
@@ -212,6 +215,7 @@ fetch('stops.geojson')
     .then(data => {
 
         const stopsLayer = L.geoJSON(data, {
+            pane: 'stops',
 
             style: {
                 color: '#f57c00'
@@ -259,6 +263,7 @@ fetch('address_points.geojson')
     .then(data => {
 
         const addressLayer = L.geoJSON(data, {
+            pane: 'addresses',
 
             pointToLayer: function(feature, latlng) {
 
@@ -303,6 +308,7 @@ fetch('roads.geojson')
     .then(data => {
 
         const roadsLayer = L.geoJSON(data, {
+            pane: 'roads',
 
             style: function(feature) {
 
@@ -368,6 +374,7 @@ fetch('buildings.geojson')
     .then(data => {
 
         const buildingsLayer = L.geoJSON(data, {
+            pane: 'buildings',
 
             style: function(feature) {
 
@@ -411,6 +418,7 @@ fetch('waterbodies.geojson')
     .then(data => {
 
         const waterLayer = L.geoJSON(data, {
+            pane: 'water',
 
             style: {
                 color: '#42a5f5',
@@ -437,6 +445,7 @@ fetch('waterways.geojson')
     .then(data => {
 
         const waterwaysLayer = L.geoJSON(data, {
+            pane: 'waterways',
 
             style: {
                 color: '#1976d2',
@@ -462,6 +471,7 @@ fetch('greenery.geojson')
     .then(data => {
 
         const greeneryLayer = L.geoJSON(data, {
+            pane: 'greenery',
 
             style: function(feature) {
 
@@ -505,6 +515,7 @@ fetch('landuse.geojson')
     .then(data => {
 
         const landuseLayer = L.geoJSON(data, {
+            pane: 'landuse',
 
             style: function(feature) {
 
@@ -593,6 +604,7 @@ fetch('district_boundary.geojson')
     .then(data => {
 
         const boundaryLayer = L.geoJSON(data, {
+            pane: 'boundary',
 
             style: {
                 color: '#4a148c',
