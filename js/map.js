@@ -254,13 +254,13 @@ fetch('bike_parking.geojson')
 
         });
 
-        if (map.getZoom() >= 16) {
+        if (map.getZoom() >= 18) {
             map.addLayer(bikeParkingLayer);
         }
 
         map.on('zoomend', function() {
 
-            if (map.getZoom() >= 16) {
+            if (map.getZoom() >= 18) {
 
                 if (!map.hasLayer(bikeParkingLayer)) {
                     map.addLayer(bikeParkingLayer);
