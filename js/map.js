@@ -195,11 +195,31 @@ fetch('36.geojson')
 
         });
 
-        heritageLayer.addTo(map);
-
         map.fitBounds(
             heritageLayer.getBounds()
         );
+
+        if (map.getZoom() >= 16) {
+            map.addLayer(heritageLayer);
+        }
+
+        map.on('zoomend', function() {
+
+            if (map.getZoom() >= 16) {
+
+                if (!map.hasLayer(heritageLayer)) {
+                    map.addLayer(heritageLayer);
+                }
+
+            } else {
+
+                if (map.hasLayer(heritageLayer)) {
+                    map.removeLayer(heritageLayer);
+                }
+
+            }
+
+        });
 
     })
     .catch(error => {
