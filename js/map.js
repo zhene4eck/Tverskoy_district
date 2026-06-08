@@ -4,6 +4,36 @@ const map = L.map('map').setView(
     14
 );
 
+// =======================
+// ПОРЯДОК СЛОЁВ
+// =======================
+
+map.createPane('boundary');
+map.createPane('landuse');
+map.createPane('greenery');
+map.createPane('water');
+map.createPane('waterways');
+map.createPane('roads');
+map.createPane('buildings');
+map.createPane('addresses');
+map.createPane('stops');
+map.createPane('bikeRoutes');
+map.createPane('bikeParking');
+map.createPane('heritage');
+
+map.getPane('boundary').style.zIndex = 200;
+map.getPane('landuse').style.zIndex = 210;
+map.getPane('greenery').style.zIndex = 220;
+map.getPane('water').style.zIndex = 230;
+map.getPane('waterways').style.zIndex = 240;
+map.getPane('roads').style.zIndex = 250;
+map.getPane('buildings').style.zIndex = 260;
+map.getPane('addresses').style.zIndex = 270;
+map.getPane('stops').style.zIndex = 280;
+map.getPane('bikeRoutes').style.zIndex = 290;
+map.getPane('bikeParking').style.zIndex = 300;
+map.getPane('heritage').style.zIndex = 310;
+
 // Подложка
 L.tileLayer(
     'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
