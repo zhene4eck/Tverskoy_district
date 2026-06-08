@@ -614,57 +614,32 @@ fetch('landuse.geojson')
 
             style: function(feature) {
 
-                const type = feature.properties.landuse;
+                const code = feature.properties.Code;
 
-                switch(type) {
+                switch(code) {
 
-                    case 'residential':
+                    case 'Е1':
                         return {
-                            color: '#d6c7a1',
-                            fillColor: '#e8dcc0',
-                            fillOpacity: 0.4,
-                            weight: 0.5
+                            fillColor: '#f0f1ee',
+                            color: '#d6d6d6',
+                            weight: 0.3,
+                            fillOpacity: 1
                         };
 
-                    case 'commercial':
+                    case 'Е2':
                         return {
-                            color: '#c5cae9',
-                            fillColor: '#9fa8da',
-                            fillOpacity: 0.4,
-                            weight: 0.5
-                        };
-
-                    case 'industrial':
-                        return {
-                            color: '#b0bec5',
-                            fillColor: '#90a4ae',
-                            fillOpacity: 0.5,
-                            weight: 0.5
-                        };
-
-                    case 'railway':
-                        return {
-                            color: '#9e9e9e',
-                            fillColor: '#bdbdbd',
-                            fillOpacity: 0.5,
-                            weight: 0.5
-                        };
-
-                    case 'grass':
-                    case 'recreation_ground':
-                        return {
-                            color: '#66bb6a',
-                            fillColor: '#a5d6a7',
-                            fillOpacity: 0.4,
-                            weight: 0.5
+                            fillColor: '#bdc4d3',
+                            color: '#a3aabb',
+                            weight: 0.3,
+                            fillOpacity: 1
                         };
 
                     default:
                         return {
-                            color: '#cccccc',
-                            fillColor: '#e0e0e0',
-                            fillOpacity: 0.3,
-                            weight: 0.5
+                            fillColor: '#f0f1ee',
+                            color: '#d6d6d6',
+                            weight: 0.3,
+                            fillOpacity: 1
                         };
                 }
 
@@ -675,7 +650,7 @@ fetch('landuse.geojson')
                 layer.bindPopup(`
                     <div style="font-family:Segoe UI;">
                         <b>Территория</b><br>
-                        Тип: ${feature.properties.landuse || 'не указан'}
+                        Код: ${feature.properties.Code || 'не указан'}
                     </div>
                 `);
 
