@@ -79,7 +79,7 @@ function getHeritageIcon(Subtype, Subsubtype) {
     if (Subtype === 'Федеральный' && name === 'Московский Кремль') {
         return L.icon({
             iconUrl: 'icons/14.svg',
-            iconSize: [28, 28],
+            iconSize: [45, 45],
             iconAnchor: [11, 22],
             popupAnchor: [0, -22]
         });
@@ -88,7 +88,7 @@ function getHeritageIcon(Subtype, Subsubtype) {
     if (Subtype === 'Федеральный' && name === 'Храм Василия Блаженного') {
         return L.icon({
             iconUrl: 'icons/15.svg',
-            iconSize: [28, 28],
+            iconSize: [45, 45],
             iconAnchor: [11, 22],
             popupAnchor: [0, -22]
         });
@@ -97,7 +97,7 @@ function getHeritageIcon(Subtype, Subsubtype) {
     if (Subtype === 'Федеральный' && name === 'Большой театр России') {
         return L.icon({
             iconUrl: 'icons/16.svg',
-            iconSize: [28, 28],
+            iconSize: [45, 45],
             iconAnchor: [11, 22],
             popupAnchor: [0, -22]
         });
