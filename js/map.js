@@ -63,7 +63,7 @@ function getHeritageIcon(Subtype, Subsubtype) {
 
     let iconNumber = 1;
 
-    if Subtype === 'Ансамбли' && Subsubtype === 'объекты садово-паркового искусства') iconNumber = 1;
+    if (Subtype === 'Ансамбли' && Subsubtype === 'объекты садово-паркового искусства') iconNumber = 1;
     else if (Subtype === 'Ансамбли' && Subsubtype === 'религиозные ансамбли') iconNumber = 2;
     else if (Subtype === 'Ансамбли' && Subsubtype === 'сооружения') iconNumber = 3;
 
@@ -101,7 +101,7 @@ fetch('36.geojson')
 
                 return L.marker(latlng, {
                     icon: getHeritageIcon(
-                        feature.properties.Type,
+                        feature.properties.Subtype,
                         feature.properties.Subsubtype
                     )
                 });
