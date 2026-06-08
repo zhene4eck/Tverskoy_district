@@ -59,25 +59,25 @@ L.tileLayer(
     }
 ).addTo(map);
 
-function getHeritageIcon(type, subsubtype) {
+function getHeritageIcon(Subtype, Subsubtype) {
 
     let iconNumber = 1;
 
-    if (type === 'Ансамбли' && subsubtype === 'объекты садово-паркового искусства') iconNumber = 1;
-    else if (type === 'Ансамбли' && subsubtype === 'религиозные ансамбли') iconNumber = 2;
-    else if (type === 'Ансамбли' && subsubtype === 'сооружения') iconNumber = 3;
+    if Subtype === 'Ансамбли' && Subsubtype === 'объекты садово-паркового искусства') iconNumber = 1;
+    else if (Subtype === 'Ансамбли' && Subsubtype === 'религиозные ансамбли') iconNumber = 2;
+    else if (Subtype === 'Ансамбли' && Subsubtype === 'сооружения') iconNumber = 3;
 
-    else if (type === 'Достопримечательные места' && subsubtype === 'объекты науки и техники') iconNumber = 4;
-    else if (type === 'Достопримечательные места' && subsubtype === 'сооружения') iconNumber = 5;
+    else if (Subtype === 'Достопримечательные места' && Subsubtype === 'объекты науки и техники') iconNumber = 4;
+    else if (Subtype === 'Достопримечательные места' && Subsubtype === 'сооружения') iconNumber = 5;
 
-    else if (type === 'Памятники' && subsubtype === 'здания') iconNumber = 6;
-    else if (type === 'Памятники' && subsubtype === 'мавзолеи') iconNumber = 7;
-    else if (type === 'Памятники' && subsubtype === 'мемориальные квартиры') iconNumber = 8;
-    else if (type === 'Памятники' && subsubtype === 'объекты науки и техники') iconNumber = 9;
-    else if (type === 'Памятники' && subsubtype === 'отдельные захоронения') iconNumber = 10;
-    else if (type === 'Памятники' && subsubtype === 'памятники религиозного назначения') iconNumber = 11;
-    else if (type === 'Памятники' && subsubtype === 'произведения монументального искусства') iconNumber = 12;
-    else if (type === 'Памятники' && subsubtype === 'сооружения') iconNumber = 13;
+    else if (Subtype === 'Памятники' && Subsubtype === 'здания') iconNumber = 6;
+    else if (Subtype === 'Памятники' && Subsubtype === 'мавзолеи') iconNumber = 7;
+    else if (Subtype === 'Памятники' && Subsubtype === 'мемориальные квартиры') iconNumber = 8;
+    else if (Subtype === 'Памятники' && Subsubtype === 'объекты науки и техники') iconNumber = 9;
+    else if (Subtype === 'Памятники' && Subsubtype === 'отдельные захоронения') iconNumber = 10;
+    else if (Subtype === 'Памятники' && Subsubtype === 'памятники религиозного назначения') iconNumber = 11;
+    else if (Subtype === 'Памятники' && Subsubtype === 'произведения монументального искусства') iconNumber = 12;
+    else if (Subtype === 'Памятники' && Subsubtype === 'сооружения') iconNumber = 13;
         
     // ПО УМОЛЧАНИЮ
     else iconNumber = 16;
