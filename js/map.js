@@ -84,7 +84,7 @@ function getHeritageIcon(Subtype, Subsubtype) {
 
     return L.icon({
         iconUrl: `icons/${iconNumber}.svg`,
-        iconSize: [11, 11],
+        iconSize: [5, 5],
         iconAnchor: [11, 22],
         popupAnchor: [0, -22]
     });
@@ -278,7 +278,7 @@ function getStopIcon(code) {
 
     return L.icon({
         iconUrl: `icons/${iconNumber}.svg`,
-        iconSize: [25, 25],
+        iconSize: [40, 40],
         iconAnchor: [9, 18],
         popupAnchor: [0, -18]
     });
