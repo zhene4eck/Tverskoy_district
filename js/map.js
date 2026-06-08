@@ -1,13 +1,10 @@
 // Создание карты
-const map = L.map('map').setView(
-    [55.765, 37.605],
-    14
-);
+const map = L.map('map').setView([55.765, 37.605], 14);
 
 // Кнопки масштаба справа
 map.zoomControl.setPosition('topright');
 
-// Подложка OpenStreetMap
+// Подложка OSM
 L.tileLayer(
     'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
     {
@@ -15,18 +12,12 @@ L.tileLayer(
     }
 ).addTo(map);
 
-// Загрузка объектов культурного наследия
+// Загрузка GeoJSON
 fetch('36.geojson')
     .then(response => response.json())
     .then(data => {
 
         const heritageLayer = L.geoJSON(data, {
-
-            pointToLayer: function(feature, latlng) {
-
-                return L.marker(latlng);
-
-            },
 
             onEachFeature: function(feature, layer) {
 
@@ -39,6 +30,7 @@ fetch('36.geojson')
     padding:14px;
     width:350px;
     font-family:Segoe UI, Arial, sans-serif;
+    box-shadow:0 2px 8px rgba(0,0,0,0.15);
 ">
 
 <h3 style="
@@ -110,7 +102,7 @@ ${p.Full_Name || ''}
 
 </div>
                 `, {
-                    maxWidth: 400
+                    maxWidth: 420
                 });
 
             }
@@ -128,8 +120,5 @@ ${p.Full_Name || ''}
 
     })
     .catch(error => {
-        console.error(
-            'Ошибка загрузки GeoJSON:',
-            error
-        );
+        console.error('Ошибка загрузки GeoJSON:', error);
     });
