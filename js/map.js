@@ -125,8 +125,6 @@ fetch('bike_parking.geojson')
     .then(response => response.json())
     .then(data => {
         
-         console.log("ВЕЛОПАРКОВКИ ЗАГРУЖАЮТСЯ");
-         console.log(data);
          const bikeParking = L.geoJSON(data, {
 
             pointToLayer: function(feature, latlng) {
@@ -150,7 +148,30 @@ fetch('bike_parking.geojson')
         console.error('Ошибка велопарковок:', error);
     });
 
+// =======================
+// ВЕЛОМАРШРУТЫ
+// =======================
 
+fetch('bike_routes.geojson')
+    .then(response => response.json())
+    .then(data => {
+
+        const bikeRoutes = L.geoJSON(data, {
+
+            style: {
+                color: '#1976d2',
+                weight: 4,
+                opacity: 0.9
+            }
+
+        });
+
+        bikeRoutes.addTo(map);
+
+    })
+    .catch(error => {
+        console.error('Ошибка веломаршрутов:', error);
+    });
 
 
 
