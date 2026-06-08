@@ -30,6 +30,7 @@ map.createPane('landuse');
 map.createPane('greenery');
 map.createPane('water');
 map.createPane('waterways');
+map.createPane('roads');
 map.createPane('roads_v1');
 map.createPane('roads_v3');
 map.createPane('roads_v4');
@@ -54,6 +55,7 @@ map.getPane('roads_v5').style.zIndex = 252;
 map.getPane('roads_v4').style.zIndex = 253;
 map.getPane('roads_v3').style.zIndex = 254;
 map.getPane('roads_v1').style.zIndex = 255;
+map.getPane('roads').style.zIndex = 250;
 map.getPane('buildings').style.zIndex = 260;
 map.getPane('addresses').style.zIndex = 270;
 map.getPane('stops').style.zIndex = 280;
@@ -557,6 +559,7 @@ fetch('roads.geojson')
             else if (code === 'В1') layer.bringToFront();
 
         });
+        
 // Масштабная генерализация
         function updateRoadVisibility() {
 
