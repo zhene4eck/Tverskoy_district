@@ -59,6 +59,13 @@ L.tileLayer(
     }
 ).addTo(map);
 
+const heritageIcon = L.icon({
+    iconUrl: 'icons/1.svg',
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32]
+});
+
 // ОКН
 fetch('36.geojson')
     .then(response => response.json())
@@ -66,6 +73,13 @@ fetch('36.geojson')
 
         heritageLayer = L.geoJSON(data, {
             pane: 'heritage',
+            pointToLayer: function(feature, latlng) {
+
+                return L.marker(latlng, {
+                    icon: heritageIcon
+                });
+
+            },
 
             onEachFeature: function(feature, layer) {
 
