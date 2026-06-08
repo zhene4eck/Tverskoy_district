@@ -116,3 +116,34 @@ fetch('36.geojson')
     .catch(error => {
         console.error(error);
     });
+
+// =======================
+// ВЕЛОПАРКОВКИ
+// =======================
+
+fetch('bike_parking.geojson')
+    .then(response => response.json())
+    .then(data => {
+
+        const bikeParking = L.geoJSON(data, {
+
+            pointToLayer: function(feature, latlng) {
+
+                return L.circleMarker(latlng, {
+                    radius: 5,
+                    color: '#2e7d32',
+                    fillColor: '#4caf50',
+                    fillOpacity: 0.9,
+                    weight: 1
+                });
+
+            }
+
+        });
+
+        bikeParking.addTo(map);
+
+    })
+    .catch(error => {
+        console.error('Ошибка велопарковок:', error);
+    });
