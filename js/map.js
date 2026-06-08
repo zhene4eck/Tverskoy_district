@@ -59,12 +59,39 @@ L.tileLayer(
     }
 ).addTo(map);
 
-const heritageIcon = L.icon({
-    iconUrl: 'icons/1.svg',
-    iconSize: [18, 18],
-    iconAnchor: [9, 18],
-    popupAnchor: [0, -18]
-});
+function getHeritageIcon(type, subsubtype) {
+
+    let iconNumber = 1;
+
+    // АНСАМБЛИ
+    if (type === 'Ансамбли' && subsubtype === 'Объекты садово-паркового искусства') iconNumber = 1;
+    else if (type === 'Ансамбли' && subsubtype === 'Религиозные ансамбли') iconNumber = 2;
+    else if (type === 'Ансамбли' && subsubtype === 'Сооружения') iconNumber = 3;
+
+    // ДОСТОПРИМЕЧАТЕЛЬНЫЕ МЕСТА
+    else if (type === 'Достопримечательные места' && subsubtype === 'Объекты науки и техники') iconNumber = 4;
+    else if (type === 'Достопримечательные места' && subsubtype === 'Сооружения') iconNumber = 5;
+
+    // ПАМЯТНИКИ
+    else if (type === 'Памятники' && subsubtype === 'Здания') iconNumber = 6;
+    else if (type === 'Памятники' && subsubtype === 'Мавзолеи') iconNumber = 7;
+    else if (type === 'Памятники' && subsubtype === 'Мемориальные квартиры') iconNumber = 8;
+    else if (type === 'Памятники' && subsubtype === 'Объекты науки и техники') iconNumber = 9;
+    else if (type === 'Памятники' && subsubtype === 'Отдельные захоронения') iconNumber = 10;
+    else if (type === 'Памятники' && subsubtype === 'Памятники религиозного назначения') iconNumber = 11;
+    else if (type === 'Памятники' && subsubtype === 'Произведения монументального искусства') iconNumber = 12;
+    else if (type === 'Памятники' && subsubtype === 'Сооружения') iconNumber = 13;
+
+    // ПО УМОЛЧАНИЮ
+    else iconNumber = 16;
+
+    return L.icon({
+        iconUrl: `icons/${iconNumber}.svg`,
+        iconSize: [22, 22],
+        iconAnchor: [11, 22],
+        popupAnchor: [0, -22]
+    });
+}
 
 // ОКН
 fetch('36.geojson')
@@ -76,7 +103,10 @@ fetch('36.geojson')
             pointToLayer: function(feature, latlng) {
 
                 return L.marker(latlng, {
-                    icon: heritageIcon
+                    icon: getHeritageIcon(
+                        feature.properties.Type,
+                        feature.properties.Subsubtype
+                    )
                 });
 
             },
