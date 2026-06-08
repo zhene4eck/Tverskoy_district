@@ -553,3 +553,39 @@ fetch('landuse.geojson')
     .catch(error => {
         console.error('Ошибка территорий:', error);
     });
+
+// =======================
+// ГРАНИЦА ТВЕРСКОГО РАЙОНА
+// =======================
+
+fetch('district_boundary.geojson')
+    .then(response => response.json())
+    .then(data => {
+
+        const boundaryLayer = L.geoJSON(data, {
+
+            style: {
+                color: '#4a148c',
+                weight: 3,
+                opacity: 1,
+                fillOpacity: 0
+            },
+
+            onEachFeature: function(feature, layer) {
+
+                layer.bindPopup(`
+                    <div style="font-family:Segoe UI;">
+                        <b>${feature.properties.name}</b>
+                    </div>
+                `);
+
+            }
+
+        });
+
+        boundaryLayer.addTo(map);
+
+    })
+    .catch(error => {
+        console.error('Ошибка границы района:', error);
+    });
