@@ -338,7 +338,7 @@ fetch('address_points.geojson')
                 return L.marker(latlng, {
                     icon: L.divIcon({
                         className: 'house-number',
-                        html: feature.properties.Number || '',
+                        html: feature.properties.Numder || '',
                         iconSize: [30, 14]
                     })
                 });
@@ -352,7 +352,7 @@ fetch('address_points.geojson')
                 layer.bindPopup(`
                     <div style="font-family:Segoe UI, Arial, sans-serif;">
                         <b>Дом:</b><br>
-                        ${p.Number || ''}
+                        ${p.Numder || ''}
                     </div>
                 `);
 
