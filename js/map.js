@@ -75,6 +75,11 @@ function getHeritageIcon(Subtype, Subsubtype) {
 
     let iconNumber = 1;
 
+    // Федеральные объекты
+    if (Subtype === 'Федеральный' && Subsubtype.trim() === 'Московский Кремль') iconNumber = 14;
+    else if (Subtype === 'Федеральный' && Subsubtype.trim() === 'Храм Василия Блаженного') iconNumber = 15;
+    else if (Subtype === 'Федеральный' && Subsubtype.trim() === 'Большой театр России') iconNumber = 16;
+
     if (Subtype === 'Ансамбли' && Subsubtype === 'объекты садово-паркового искусства') iconNumber = 1;
     else if (Subtype === 'Ансамбли' && Subsubtype === 'религиозные ансамбли') iconNumber = 2;
     else if (Subtype === 'Ансамбли' && Subsubtype === 'сооружения') iconNumber = 3;
