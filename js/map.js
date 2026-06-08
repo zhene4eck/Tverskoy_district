@@ -61,7 +61,7 @@ fetch('36.geojson')
     .then(response => response.json())
     .then(data => {
 
-        const heritageLayer = L.geoJSON(data, {
+        heritageLayer = L.geoJSON(data, {
             pane: 'heritage',
 
             onEachFeature: function(feature, layer) {
@@ -170,7 +170,7 @@ fetch('bike_parking.geojson')
     .then(response => response.json())
     .then(data => {
         
-         const bikeParking = L.geoJSON(data, {
+         bikeParking = L.geoJSON(data, {
             pane: 'bikeParking',
 
             pointToLayer: function(feature, latlng) {
@@ -202,7 +202,7 @@ fetch('bike_routes.geojson')
     .then(response => response.json())
     .then(data => {
 
-        const bikeRoutes = L.geoJSON(data, {
+        bikeRoutes = L.geoJSON(data, {
             pane: 'bikeRoutes',
 
             style: {
@@ -228,7 +228,7 @@ fetch('stops.geojson')
     .then(response => response.json())
     .then(data => {
 
-        const stopsLayer = L.geoJSON(data, {
+        stopsLayer = L.geoJSON(data, {
             pane: 'stops',
 
             style: {
@@ -276,7 +276,7 @@ fetch('address_points.geojson')
     .then(response => response.json())
     .then(data => {
 
-        const addressLayer = L.geoJSON(data, {
+        addressLayer = L.geoJSON(data, {
             pane: 'addresses',
 
             pointToLayer: function(feature, latlng) {
@@ -321,7 +321,7 @@ fetch('roads.geojson')
     .then(response => response.json())
     .then(data => {
 
-        const roadsLayer = L.geoJSON(data, {
+        roadsLayer = L.geoJSON(data, {
             pane: 'roads',
 
             style: function(feature) {
@@ -387,7 +387,7 @@ fetch('buildings.geojson')
     .then(response => response.json())
     .then(data => {
 
-        const buildingsLayer = L.geoJSON(data, {
+        buildingsLayer = L.geoJSON(data, {
             pane: 'buildings',
 
             style: function(feature) {
@@ -431,7 +431,7 @@ fetch('waterbodies.geojson')
     .then(response => response.json())
     .then(data => {
 
-        const waterLayer = L.geoJSON(data, {
+        waterLayer = L.geoJSON(data, {
             pane: 'water',
 
             style: {
@@ -458,7 +458,7 @@ fetch('waterways.geojson')
     .then(response => response.json())
     .then(data => {
 
-        const waterwaysLayer = L.geoJSON(data, {
+        waterwaysLayer = L.geoJSON(data, {
             pane: 'waterways',
 
             style: {
@@ -484,7 +484,7 @@ fetch('greenery.geojson')
     .then(response => response.json())
     .then(data => {
 
-        const greeneryLayer = L.geoJSON(data, {
+        greeneryLayer = L.geoJSON(data, {
             pane: 'greenery',
 
             style: function(feature) {
@@ -528,7 +528,7 @@ fetch('landuse.geojson')
     .then(response => response.json())
     .then(data => {
 
-        const landuseLayer = L.geoJSON(data, {
+        landuseLayer = L.geoJSON(data, {
             pane: 'landuse',
 
             style: function(feature) {
@@ -617,7 +617,7 @@ fetch('district_boundary.geojson')
     .then(response => response.json())
     .then(data => {
 
-        const boundaryLayer = L.geoJSON(data, {
+        boundaryLayer = L.geoJSON(data, {
             pane: 'boundary',
 
             style: {
