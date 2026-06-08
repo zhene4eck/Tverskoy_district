@@ -268,6 +268,22 @@ fetch('bike_routes.geojson')
 // ОСТАНОВКИ ОБЩЕСТВЕННОГО ТРАНСПОРТА
 // =======================
 
+function getStopIcon(code) {
+
+    let iconNumber = 17;
+
+    if (code === 'Ж1') iconNumber = 22;
+    else if (code === 'Ж2') iconNumber = 17;
+    else if (code === 'Ж3') iconNumber = 21;
+
+    return L.icon({
+        iconUrl: `icons/${iconNumber}.svg`,
+        iconSize: [18, 18],
+        iconAnchor: [9, 18],
+        popupAnchor: [0, -18]
+    });
+}
+
 fetch('stops.geojson')
     .then(response => response.json())
     .then(data => {
@@ -275,18 +291,12 @@ fetch('stops.geojson')
         stopsLayer = L.geoJSON(data, {
             pane: 'stops',
 
-            style: {
-                color: '#f57c00'
-            },
-
             pointToLayer: function(feature, latlng) {
 
-                return L.circleMarker(latlng, {
-                    radius: 6,
-                    color: '#f57c00',
-                    fillColor: '#ff9800',
-                    fillOpacity: 0.9,
-                    weight: 1
+                return L.marker(latlng, {
+                    icon: getStopIcon(
+                        feature.properties.Code
+                    )
                 });
 
             },
