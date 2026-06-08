@@ -73,6 +73,8 @@ L.tileLayer(
 
 function getHeritageIcon(Subtype, Subsubtype) {
 
+    console.log(Subtype, '|', Subsubtype);
+    
     let iconNumber = 1;
 
     // Федеральные объекты
