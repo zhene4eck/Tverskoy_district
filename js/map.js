@@ -156,22 +156,17 @@ fetch('bike_routes.geojson')
     .then(response => response.json())
     .then(data => {
 
-        console.log("МАРШРУТЫ");
-        console.log(data);
-
         const bikeRoutes = L.geoJSON(data, {
 
             style: {
-                color: 'red',
-                weight: 10,
-                opacity: 1
+                color: '#1976d2',
+                weight: 4,
+                opacity: 0.9
             }
 
         });
 
         bikeRoutes.addTo(map);
-
-        map.fitBounds(bikeRoutes.getBounds());
 
     })
     .catch(error => {
