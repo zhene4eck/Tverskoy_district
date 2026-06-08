@@ -230,34 +230,56 @@ fetch('36.geojson')
 // ВЕЛОПАРКОВКИ
 // =======================
 
+const bikeParkingIcon = L.icon({
+    iconUrl: 'icons/25.svg',
+    iconSize: [24, 24],
+    iconAnchor: [12, 24],
+    popupAnchor: [0, -24]
+});
+
 fetch('bike_parking.geojson')
     .then(response => response.json())
     .then(data => {
-        
-         bikeParkingLayer = L.geoJSON(data, {
+
+        bikeParkingLayer = L.geoJSON(data, {
             pane: 'bikeParking',
 
             pointToLayer: function(feature, latlng) {
 
-                return L.circleMarker(latlng, {
-                    radius: 5,
-                    color: '#2e7d32',
-                    fillColor: '#4caf50',
-                    fillOpacity: 0.9,
-                    weight: 1
+                return L.marker(latlng, {
+                    icon: bikeParkingIcon
                 });
 
             }
 
         });
 
-        bikeParkingLayer.addTo(map);
+        if (map.getZoom() >= 16) {
+            map.addLayer(bikeParkingLayer);
+        }
+
+        map.on('zoomend', function() {
+
+            if (map.getZoom() >= 16) {
+
+                if (!map.hasLayer(bikeParkingLayer)) {
+                    map.addLayer(bikeParkingLayer);
+                }
+
+            } else {
+
+                if (map.hasLayer(bikeParkingLayer)) {
+                    map.removeLayer(bikeParkingLayer);
+                }
+
+            }
+
+        });
 
     })
     .catch(error => {
         console.error('Ошибка велопарковок:', error);
     });
-
 // =======================
 // ВЕЛОМАРШРУТЫ
 // =======================
