@@ -187,7 +187,7 @@ fetch('bike_parking.geojson')
 
         });
 
-        bikeParking.addTo(map);
+        bikeParkingLayer.addTo(map);
 
     })
     .catch(error => {
@@ -213,7 +213,7 @@ fetch('bike_routes.geojson')
 
         });
 
-        bikeRoutes.addTo(map);
+        bikeRoutesLayer.addTo(map);
 
     })
     .catch(error => {
