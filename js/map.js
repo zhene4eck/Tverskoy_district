@@ -4,6 +4,20 @@ const map = L.map('map').setView(
     14
 );
 
+// Слои
+let heritageLayer;
+let bikeRoutesLayer;
+let bikeParkingLayer;
+let stopsLayer;
+let addressLayer;
+let roadsLayer;
+let buildingsLayer;
+let waterLayer;
+let waterwaysLayer;
+let greeneryLayer;
+let landuseLayer;
+let boundaryLayer;
+
 // =======================
 // ПОРЯДОК СЛОЁВ
 // =======================
