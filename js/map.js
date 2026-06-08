@@ -64,9 +64,10 @@ function getHeritageIcon(type, subsubtype) {
     let iconNumber = 1;
 
     // АНСАМБЛИ
-    if (type === 'Ансамбли' && subsubtype === 'Объекты садово-паркового искусства') iconNumber = 1;
-    else if (type === 'Ансамбли' && subsubtype === 'Религиозные ансамбли') iconNumber = 2;
-    else if (type === 'Ансамбли' && subsubtype === 'Сооружения') iconNumber = 3;
+    if (type === 'Ансамбли') iconNumber = 1;
+    else if (type === 'Достопримечательные места') iconNumber = 4;
+    else if (type === 'Памятники') iconNumber = 6;
+    else iconNumber = 16;
 
     // ДОСТОПРИМЕЧАТЕЛЬНЫЕ МЕСТА
     else if (type === 'Достопримечательные места' && subsubtype === 'Объекты науки и техники') iconNumber = 4;
