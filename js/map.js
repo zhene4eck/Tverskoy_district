@@ -422,3 +422,46 @@ fetch('waterways.geojson')
     .catch(error => {
         console.error('Ошибка русел:', error);
     });
+
+// =======================
+// РАСТИТЕЛЬНОСТЬ
+// =======================
+
+fetch('greenery.geojson')
+    .then(response => response.json())
+    .then(data => {
+
+        const greeneryLayer = L.geoJSON(data, {
+
+            style: function(feature) {
+
+                return {
+                    color: '#43a047',
+                    weight: 1,
+                    fillColor: '#81c784',
+                    fillOpacity: 0.5
+                };
+
+            },
+
+            onEachFeature: function(feature, layer) {
+
+                const p = feature.properties;
+
+                layer.bindPopup(`
+                    <div style="font-family:Segoe UI;">
+                        <b>${p.Name || 'Зелёная территория'}</b><br>
+                        Тип: ${p['Code OSM'] || ''}
+                    </div>
+                `);
+
+            }
+
+        });
+
+        greeneryLayer.addTo(map);
+
+    })
+    .catch(error => {
+        console.error('Ошибка растительности:', error);
+    });
