@@ -360,9 +360,13 @@ fetch('address_points.geojson')
 
         });
 
-        function updateAddressVisibility() {
+        if (map.getZoom() >= 17) {
+            map.addLayer(addressLayer);
+        }
 
-            if (map.getZoom() >= 20) {
+        map.on('zoomend', function() {
+
+            if (map.getZoom() >= 17) {
 
                 if (!map.hasLayer(addressLayer)) {
                     map.addLayer(addressLayer);
@@ -376,17 +380,12 @@ fetch('address_points.geojson')
 
             }
 
-        }
-
-        updateAddressVisibility();
-
-        map.on('zoomend', updateAddressVisibility);
+        });
 
     })
     .catch(error => {
         console.error('Ошибка адресных точек:', error);
     });
-
 // =======================
 // ДОРОГИ
 // =======================
