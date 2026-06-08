@@ -335,12 +335,12 @@ fetch('address_points.geojson')
 
             pointToLayer: function(feature, latlng) {
 
-                return L.circleMarker(latlng, {
-                    radius: 3,
-                    color: '#616161',
-                    fillColor: '#9e9e9e',
-                    fillOpacity: 0.8,
-                    weight: 1
+                return L.marker(latlng, {
+                    icon: L.divIcon({
+                        className: 'house-number',
+                        html: feature.properties.Number || '',
+                        iconSize: [30, 14]
+                    })
                 });
 
             },
