@@ -328,3 +328,46 @@ fetch('roads.geojson')
     .catch(error => {
         console.error('Ошибка дорог:', error);
     });
+
+// =======================
+// ЗДАНИЯ
+// =======================
+
+fetch('buildings.geojson')
+    .then(response => response.json())
+    .then(data => {
+
+        const buildingsLayer = L.geoJSON(data, {
+
+            style: function(feature) {
+
+                return {
+                    color: '#757575',
+                    weight: 0.5,
+                    fillColor: '#d9d9d9',
+                    fillOpacity: 0.5
+                };
+
+            },
+
+            onEachFeature: function(feature, layer) {
+
+                const p = feature.properties;
+
+                layer.bindPopup(`
+                    <div style="font-family:Segoe UI;">
+                        <b>Здание</b><br>
+                        Тип: ${p.building || 'не указан'}
+                    </div>
+                `);
+
+            }
+
+        });
+
+        buildingsLayer.addTo(map);
+
+    })
+    .catch(error => {
+        console.error('Ошибка зданий:', error);
+    });
