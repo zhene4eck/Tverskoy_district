@@ -12,7 +12,10 @@ L.tileLayer(
     }
 ).addTo(map);
 
-// Загрузка GeoJSON
+// =======================
+// ОБЪЕКТЫ КУЛЬТУРНОГО НАСЛЕДИЯ
+// =======================
+
 fetch('36.geojson')
     .then(response => response.json())
     .then(data => {
@@ -120,5 +123,71 @@ ${p.Full_Name || ''}
 
     })
     .catch(error => {
-        console.error('Ошибка загрузки GeoJSON:', error);
+        console.error('Ошибка загрузки ОКН:', error);
+    });
+
+
+// =======================
+// ВЕЛОМАРШРУТЫ
+// =======================
+
+fetch('bike_routes.geojson')
+    .then(response => response.json())
+    .then(data => {
+
+        const bikeRoutes = L.geoJSON(data, {
+
+            style: {
+                color: '#1976d2',
+                weight: 4,
+                opacity: 0.9
+            }
+
+        });
+
+        bikeRoutes.addTo(map);
+
+    })
+    .catch(error => {
+        console.error('Ошибка загрузки веломаршрутов:', error);
+    });
+
+
+// =======================
+// ВЕЛОПАРКОВКИ
+// =======================
+
+fetch('bike_parking.geojson')
+    .then(response => response.json())
+    .then(data => {
+
+        const bikeParking = L.geoJSON(data, {
+
+            pointToLayer: function(feature, latlng) {
+
+                return L.circleMarker(latlng, {
+                    radius: 5,
+                    color: '#2e7d32',
+                    fillColor: '#4caf50',
+                    fillOpacity: 0.9,
+                    weight: 1
+                });
+
+            },
+
+            onEachFeature: function(feature, layer) {
+
+                layer.bindPopup(`
+                    <b>Велопарковка</b>
+                `);
+
+            }
+
+        });
+
+        bikeParking.addTo(map);
+
+    })
+    .catch(error => {
+        console.error('Ошибка загрузки велопарковок:', error);
     });
