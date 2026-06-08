@@ -395,14 +395,92 @@ fetch('buildings.geojson')
 
             style: function(feature) {
 
-                return {
-                    color: '#757575',
-                    weight: 0.5,
-                    fillColor: '#d9d9d9',
-                    fillOpacity: 0.5
-                };
+    const code = feature.properties.Code;
 
-            },
+    switch(code) {
+
+        // Жилые
+        case 'Б1':
+            return {
+                fillColor: '#e6e6e3',
+                color: '#cecece',
+                weight: 0.3,
+                fillOpacity: 1
+            };
+
+        // Офисы
+        case 'Б2':
+            return {
+                fillColor: '#e3e4e6',
+                color: '#cecece',
+                weight: 0.3,
+                fillOpacity: 1
+            };
+
+        // Образование
+        case 'Б3':
+            return {
+                fillColor: '#e7e6f0',
+                color: '#cecece',
+                weight: 0.3,
+                fillOpacity: 1
+            };
+
+        // Медицина
+        case 'Б4':
+            return {
+                fillColor: '#f2e3e3',
+                color: '#cecece',
+                weight: 0.3,
+                fillOpacity: 1
+            };
+
+        // Культура
+        case 'Б5':
+            return {
+                fillColor: '#f0e8dc',
+                color: '#cecece',
+                weight: 0.3,
+                fillOpacity: 1
+            };
+
+        // Религия
+        case 'Б6':
+            return {
+                fillColor: '#eae6f1',
+                color: '#cecece',
+                weight: 0.3,
+                fillOpacity: 1
+            };
+
+        // Промышленность
+        case 'Б7':
+            return {
+                fillColor: '#dcdcdc',
+                color: '#cecece',
+                weight: 0.3,
+                fillOpacity: 1
+            };
+
+        // Спорт
+        case 'Б8':
+            return {
+                fillColor: '#e7eee3',
+                color: '#cecece',
+                weight: 0.3,
+                fillOpacity: 1
+            };
+
+        default:
+            return {
+                fillColor: '#e6e6e3',
+                color: '#cecece',
+                weight: 0.3,
+                fillOpacity: 1
+            };
+    }
+
+},
 
             onEachFeature: function(feature, layer) {
 
