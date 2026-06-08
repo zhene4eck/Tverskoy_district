@@ -338,7 +338,7 @@ fetch('address_points.geojson')
                 return L.marker(latlng, {
                     icon: L.divIcon({
                         className: 'house-number',
-                        html: feature.properties.Numder || '',
+                        html: feature.properties['addr:housenumber'] || ''
                         iconSize: [30, 14]
                     })
                 });
@@ -352,7 +352,7 @@ fetch('address_points.geojson')
                 layer.bindPopup(`
                     <div style="font-family:Segoe UI, Arial, sans-serif;">
                         <b>Дом:</b><br>
-                        ${p.Numder || ''}
+                        ${p['addr:housenumber'] || ''}
                     </div>
                 `);
 
@@ -364,7 +364,7 @@ fetch('address_points.geojson')
 
         function updateAddressVisibility() {
 
-            if (map.getZoom() >= 13) {
+            if (map.getZoom() >= 17) {
 
                 if (!map.hasLayer(addressLayer)) {
                     map.addLayer(addressLayer);
