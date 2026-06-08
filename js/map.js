@@ -232,7 +232,7 @@ fetch('36.geojson')
 
 const bikeParkingIcon = L.icon({
     iconUrl: 'icons/25.svg',
-    iconSize: [30, 30],
+    iconSize: [35, 35],
     iconAnchor: [12, 24],
     popupAnchor: [0, -24]
 });
