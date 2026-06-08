@@ -668,6 +668,46 @@ setTimeout(() => {
             toggleLayer(heritageLayer, this.checked);
         });
 
+        document.getElementById('addressCheck')
+        ?.addEventListener('change', function() {
+            toggleLayer(addressLayer, this.checked);
+        });
+
+    document.getElementById('roadsCheck')
+        ?.addEventListener('change', function() {
+            toggleLayer(roadsLayer, this.checked);
+        });
+
+    document.getElementById('buildingsCheck')
+        ?.addEventListener('change', function() {
+            toggleLayer(buildingsLayer, this.checked);
+        });
+
+    document.getElementById('waterCheck')
+        ?.addEventListener('change', function() {
+            toggleLayer(waterLayer, this.checked);
+        });
+
+    document.getElementById('waterwaysCheck')
+        ?.addEventListener('change', function() {
+            toggleLayer(waterwaysLayer, this.checked);
+        });
+
+    document.getElementById('greeneryCheck')
+        ?.addEventListener('change', function() {
+            toggleLayer(greeneryLayer, this.checked);
+        });
+
+    document.getElementById('landuseCheck')
+        ?.addEventListener('change', function() {
+            toggleLayer(landuseLayer, this.checked);
+        });
+
+    document.getElementById('boundaryCheck')
+        ?.addEventListener('change', function() {
+            toggleLayer(boundaryLayer, this.checked);
+        });
+
     document.getElementById('bikeRoutesCheck')
         ?.addEventListener('change', function() {
             toggleLayer(bikeRoutesLayer, this.checked);
