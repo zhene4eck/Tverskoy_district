@@ -61,9 +61,9 @@ L.tileLayer(
 
 const heritageIcon = L.icon({
     iconUrl: 'icons/1.svg',
-    iconSize: [32, 32],
-    iconAnchor: [16, 32],
-    popupAnchor: [0, -32]
+    iconSize: [18, 18],
+    iconAnchor: [9, 18],
+    popupAnchor: [0, -18]
 });
 
 // ОКН
