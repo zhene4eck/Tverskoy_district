@@ -463,51 +463,50 @@ fetch('roads.geojson')
 
     const code = feature.properties.Code;
 
-    switch(code) {
+   switch(code) {
 
-        // Магистральные
-        case 'В3':
-            return {
-                color: '#b7bec4',
-                weight: 3
-            };
+    // Магистральные
+    case 'В1':
+    case 'В3':
+        return {
+            color: '#6f767c',
+            weight: 5
+        };
 
-        // Районные
-        case 'В4':
-            return {
-                color: '#c6cdd3',
-                weight: 2.5
-            };
+    // Районные
+    case 'В4':
+        return {
+            color: '#8e959b',
+            weight: 4
+        };
 
-        // Местные
-        case 'В5':
-            return {
-                color: '#d6dce0',
-                weight: 2
-            };
+    // Местные
+    case 'В5':
+        return {
+            color: '#aeb5ba',
+            weight: 3
+        };
 
-        // Внутриквартальные
-        case 'В6':
-            return {
-                color: '#e4e8eb',
-                weight: 1.5
-            };
+    // Внутриквартальные
+    case 'В6':
+        return {
+            color: '#c9ced2',
+            weight: 2
+        };
 
-        // Пешеходные
-        case 'В7':
-            return {
-                color: '#d0d0d0',
-                weight: 1,
-                dashArray: '4,4'
-            };
+    // Пешеходные
+    case 'В7':
+        return {
+            color: '#e0e4e7',
+            weight: 1
+        };
 
-        default:
-            return {
-                color: '#d6dce0',
-                weight: 1.5
-            };
-    }
-
+    default:
+        return {
+            color: '#aeb5ba',
+            weight: 2
+        };
+}
 },
 
             onEachFeature: function(feature, layer) {
