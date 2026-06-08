@@ -352,7 +352,7 @@ fetch('address_points.geojson')
                 layer.bindPopup(`
                     <div style="font-family:Segoe UI, Arial, sans-serif;">
                         <b>Дом:</b><br>
-                        ${p['addr:housenumber'] || ''}
+                        ${p.Number || ''}
                     </div>
                 `);
 
@@ -361,6 +361,28 @@ fetch('address_points.geojson')
         });
 
         addressLayer.addTo(map);
+
+        function updateAddressVisibility() {
+
+            if (map.getZoom() >= 17) {
+
+                if (!map.hasLayer(addressLayer)) {
+                    map.addLayer(addressLayer);
+                }
+
+            } else {
+
+                if (map.hasLayer(addressLayer)) {
+                    map.removeLayer(addressLayer);
+                }
+
+            }
+
+        }
+
+        updateAddressVisibility();
+
+        map.on('zoomend', updateAddressVisibility);
 
     })
     .catch(error => {
