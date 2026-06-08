@@ -211,28 +211,52 @@ fetch('36.geojson')
             heritageLayer.getBounds()
         );
 
-        if (map.getZoom() >= 16) {
-            map.addLayer(heritageLayer);
+        function updateHeritageVisibility() {
+
+    const zoom = map.getZoom();
+
+    heritageLayer.eachLayer(function(layer) {
+
+        const subtype =
+            layer.feature.properties.Subtype;
+
+        let visible = false;
+
+        // Федеральные ОКН
+        if (subtype === 'Федеральный') {
+
+            visible = zoom >= 13;
+
         }
 
-        map.on('zoomend', function() {
+        // Остальные ОКН
+        else {
 
-            if (map.getZoom() >= 16) {
+            visible = zoom >= 16;
 
-                if (!map.hasLayer(heritageLayer)) {
-                    map.addLayer(heritageLayer);
-                }
+        }
 
-            } else {
+        if (visible) {
 
-                if (map.hasLayer(heritageLayer)) {
-                    map.removeLayer(heritageLayer);
-                }
-
+            if (!map.hasLayer(layer)) {
+                layer.addTo(map);
             }
 
-        });
+        } else {
 
+            map.removeLayer(layer);
+
+        }
+
+    });
+
+}
+
+heritageLayer.addTo(map);
+
+updateHeritageVisibility();
+
+map.on('zoomend', updateHeritageVisibility);
     })
     .catch(error => {
         console.error(error);
