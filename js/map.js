@@ -4,6 +4,9 @@ const map = L.map('map').setView(
     14
 );
 
+// Кнопки масштаба справа
+map.zoomControl.setPosition('topright');
+
 // Подложка OpenStreetMap
 L.tileLayer(
     'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -21,13 +24,7 @@ fetch('36.geojson')
 
             pointToLayer: function(feature, latlng) {
 
-                return L.circleMarker(latlng, {
-                    radius: 6,
-                    color: '#8b0000',
-                    weight: 1,
-                    fillColor: '#c0392b',
-                    fillOpacity: 0.8
-                });
+                return L.marker(latlng);
 
             },
 
@@ -36,27 +33,85 @@ fetch('36.geojson')
                 const p = feature.properties;
 
                 layer.bindPopup(`
-                    <div style="max-width:320px;">
-                        <h3 style="margin-top:0;">
-                            ${p.Name || 'Без названия'}
-                        </h3>
+<div style="
+    background:white;
+    border-radius:14px;
+    padding:14px;
+    width:350px;
+    font-family:Segoe UI, Arial, sans-serif;
+">
 
-                        <p>
-                            <b>Категория:</b><br>
-                            ${p.Subtype || '-'}
-                        </p>
+<h3 style="
+    margin:0 0 8px 0;
+    color:#2c3e50;
+">
+${p.Name || ''}
+</h3>
 
-                        <p>
-                            <b>Вид объекта:</b><br>
-                            ${p.Subsubtype || '-'}
-                        </p>
+<div style="
+    color:#666;
+    font-size:12px;
+    margin-bottom:10px;
+">
+📍 ${p.Addresses || ''}
+</div>
 
-                        <p>
-                            <b>Адрес:</b><br>
-                            ${p.Addresses || '-'}
-                        </p>
-                    </div>
-                `);
+<div style="margin-bottom:10px;">
+
+<span style="
+    background:#e3f2fd;
+    color:#1565c0;
+    padding:4px 10px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:600;
+">
+${p.Type || ''}
+</span>
+
+<span style="
+    background:#f3e5f5;
+    color:#7b1fa2;
+    padding:4px 10px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:600;
+">
+${p.Subtype || ''}
+</span>
+
+</div>
+
+<div style="margin-bottom:12px;">
+
+<span style="
+    background:#e8f5e9;
+    color:#2e7d32;
+    padding:4px 10px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:600;
+">
+${p.Subsubtype || ''}
+</span>
+
+</div>
+
+<div style="
+    background:#fafafa;
+    border-left:4px solid #1565c0;
+    padding:8px 10px;
+    margin-bottom:11px;
+    font-size:12px;
+">
+<b>Подробнее:</b><br>
+${p.Full_Name || ''}
+</div>
+
+</div>
+                `, {
+                    maxWidth: 400
+                });
 
             }
 
@@ -64,7 +119,6 @@ fetch('36.geojson')
 
         heritageLayer.addTo(map);
 
-        // Автоматический переход к объектам
         map.fitBounds(
             heritageLayer.getBounds(),
             {
@@ -74,5 +128,8 @@ fetch('36.geojson')
 
     })
     .catch(error => {
-        console.error('Ошибка загрузки GeoJSON:', error);
+        console.error(
+            'Ошибка загрузки GeoJSON:',
+            error
+        );
     });
