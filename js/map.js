@@ -362,7 +362,7 @@ fetch('address_points.geojson')
 
         function updateAddressVisibility() {
 
-            if (map.getZoom() >= 10) {
+            if (map.getZoom() >= 20) {
 
                 if (!map.hasLayer(addressLayer)) {
                     map.addLayer(addressLayer);
