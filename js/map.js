@@ -335,7 +335,27 @@ fetch('stops.geojson')
 
         });
 
-        stopsLayer.addTo(map);
+        if (map.getZoom() >= 16) {
+            map.addLayer(stopsLayer);
+        }
+
+        map.on('zoomend', function() {
+
+            if (map.getZoom() >= 16) {
+
+                if (!map.hasLayer(stopsLayer)) {
+                    map.addLayer(stopsLayer);
+                }
+
+            } else {
+
+                if (map.hasLayer(stopsLayer)) {
+                    map.removeLayer(stopsLayer);
+                }
+
+            }
+
+        });
 
     })
     .catch(error => {
