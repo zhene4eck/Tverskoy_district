@@ -38,7 +38,7 @@ map.createPane('bikeRoutes');
 map.createPane('bikeParking');
 map.createPane('heritage');
 
-map.getPane('boundary').style.zIndex = 295;
+map.getPane('boundary').style.zIndex = 200;
 map.getPane('landuse').style.zIndex = 210;
 map.getPane('greenery').style.zIndex = 220;
 map.getPane('water').style.zIndex = 230;
