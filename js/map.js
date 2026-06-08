@@ -329,36 +329,54 @@ fetch('roads.geojson')
 
             style: function(feature) {
 
-                const roadType = feature.properties.highway;
+    const code = feature.properties.Code;
 
-                switch (roadType) {
+    switch(code) {
 
-                    case 'primary':
-                        return {
-                            color: '#d32f2f',
-                            weight: 4
-                        };
+        // Магистральные
+        case 'В3':
+            return {
+                color: '#b7bec4',
+                weight: 3
+            };
 
-                    case 'secondary':
-                        return {
-                            color: '#f57c00',
-                            weight: 3
-                        };
+        // Районные
+        case 'В4':
+            return {
+                color: '#c6cdd3',
+                weight: 2.5
+            };
 
-                    case 'tertiary':
-                        return {
-                            color: '#757575',
-                            weight: 2
-                        };
+        // Местные
+        case 'В5':
+            return {
+                color: '#d6dce0',
+                weight: 2
+            };
 
-                    default:
-                        return {
-                            color: '#9e9e9e',
-                            weight: 1
-                        };
-                }
+        // Внутриквартальные
+        case 'В6':
+            return {
+                color: '#e4e8eb',
+                weight: 1.5
+            };
 
-            },
+        // Пешеходные
+        case 'В7':
+            return {
+                color: '#d0d0d0',
+                weight: 1,
+                dashArray: '4,4'
+            };
+
+        default:
+            return {
+                color: '#d6dce0',
+                weight: 1.5
+            };
+    }
+
+},
 
             onEachFeature: function(feature, layer) {
 
@@ -367,7 +385,7 @@ fetch('roads.geojson')
                 layer.bindPopup(`
                     <div style="font-family:Segoe UI;">
                         <b>${p.name || 'Без названия'}</b><br>
-                        Тип: ${p.highway || ''}
+                        Категория дороги: ${p.Code || ''}
                     </div>
                 `);
 
