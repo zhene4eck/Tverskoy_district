@@ -722,7 +722,7 @@ fetch('buildings.geojson')
 
         function updateBuildingsVisibility() {
 
-            const visible = map.getZoom() >= 13;
+            const visible = map.getZoom() >= 15;
 
             buildingsLayer.eachLayer(function(layer) {
 
