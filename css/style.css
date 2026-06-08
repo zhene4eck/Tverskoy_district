@@ -52,10 +52,19 @@ body {
 }
 
 .house-number {
-    color: black;
-    font-size: 12px;
-    font-weight: bold;
-    background: white;
-    padding: 2px;
-    border: 1px solid #ccc;
+    background: transparent;
+    border: none;
+
+    color: #4a4a4a;
+    font-size: 10px;
+    font-weight: 600;
+
+    text-align: center;
+    white-space: nowrap;
+
+    text-shadow:
+        1px 1px 0 white,
+       -1px 1px 0 white,
+        1px -1px 0 white,
+       -1px -1px 0 white;
 }
