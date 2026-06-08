@@ -645,3 +645,42 @@ fetch('district_boundary.geojson')
     .catch(error => {
         console.error('Ошибка границы района:', error);
     });
+
+// =======================
+// ЧЕКБОКСЫ СЛОЁВ
+// =======================
+
+function toggleLayer(layer, checked) {
+
+    if (!layer) return;
+
+    if (checked) {
+        map.addLayer(layer);
+    } else {
+        map.removeLayer(layer);
+    }
+}
+
+setTimeout(() => {
+
+    document.getElementById('heritageCheck')
+        ?.addEventListener('change', function() {
+            toggleLayer(heritageLayer, this.checked);
+        });
+
+    document.getElementById('bikeRoutesCheck')
+        ?.addEventListener('change', function() {
+            toggleLayer(bikeRoutesLayer, this.checked);
+        });
+
+    document.getElementById('bikeParkingCheck')
+        ?.addEventListener('change', function() {
+            toggleLayer(bikeParkingLayer, this.checked);
+        });
+
+    document.getElementById('stopsCheck')
+        ?.addEventListener('change', function() {
+            toggleLayer(stopsLayer, this.checked);
+        });
+
+}, 3000);
