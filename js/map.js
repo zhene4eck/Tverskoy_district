@@ -170,7 +170,7 @@ fetch('bike_parking.geojson')
     .then(response => response.json())
     .then(data => {
         
-         bikeParking = L.geoJSON(data, {
+         bikeParkingLayer = L.geoJSON(data, {
             pane: 'bikeParking',
 
             pointToLayer: function(feature, latlng) {
@@ -202,7 +202,7 @@ fetch('bike_routes.geojson')
     .then(response => response.json())
     .then(data => {
 
-        bikeRoutes = L.geoJSON(data, {
+        bikeRoutesLayer = L.geoJSON(data, {
             pane: 'bikeRoutes',
 
             style: {
