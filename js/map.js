@@ -221,5 +221,45 @@ fetch('stops.geojson')
     });
 
 // =======================
-// ОСТАНОВКИ ОБЩЕСТВЕННОГО ТРАНСПОРТА
+// АДРЕСНЫЕ ТОЧКИ
 // =======================
+
+fetch('address_points.geojson')
+    .then(response => response.json())
+    .then(data => {
+
+        const addressLayer = L.geoJSON(data, {
+
+            pointToLayer: function(feature, latlng) {
+
+                return L.circleMarker(latlng, {
+                    radius: 3,
+                    color: '#616161',
+                    fillColor: '#9e9e9e',
+                    fillOpacity: 0.8,
+                    weight: 1
+                });
+
+            },
+
+            onEachFeature: function(feature, layer) {
+
+                const p = feature.properties;
+
+                layer.bindPopup(`
+                    <div style="font-family:Segoe UI, Arial, sans-serif;">
+                        <b>Дом:</b><br>
+                        ${p['addr:housenumber'] || ''}
+                    </div>
+                `);
+
+            }
+
+        });
+
+        addressLayer.addTo(map);
+
+    })
+    .catch(error => {
+        console.error('Ошибка адресных точек:', error);
+    });
