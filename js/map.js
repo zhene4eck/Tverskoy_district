@@ -4,6 +4,9 @@ const map = L.map('map').setView(
     14
 );
 
+// Масштабная регулеровка справа
+map.zoomControl.setPosition('topright');
+
 // Слои
 let heritageLayer;
 let bikeRoutesLayer;
