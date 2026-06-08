@@ -371,3 +371,54 @@ fetch('buildings.geojson')
     .catch(error => {
         console.error('Ошибка зданий:', error);
     });
+
+// =======================
+// ВОДОЁМЫ
+// =======================
+
+fetch('waterbodies.geojson')
+    .then(response => response.json())
+    .then(data => {
+
+        const waterLayer = L.geoJSON(data, {
+
+            style: {
+                color: '#42a5f5',
+                weight: 1,
+                fillColor: '#90caf9',
+                fillOpacity: 0.7
+            }
+
+        });
+
+        waterLayer.addTo(map);
+
+    })
+    .catch(error => {
+        console.error('Ошибка водоёмов:', error);
+    });
+
+// =======================
+// РУСЛА
+// =======================
+
+fetch('waterways.geojson')
+    .then(response => response.json())
+    .then(data => {
+
+        const waterwaysLayer = L.geoJSON(data, {
+
+            style: {
+                color: '#1976d2',
+                weight: 2,
+                opacity: 0.9
+            }
+
+        });
+
+        waterwaysLayer.addTo(map);
+
+    })
+    .catch(error => {
+        console.error('Ошибка русел:', error);
+    });
