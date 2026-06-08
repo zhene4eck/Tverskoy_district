@@ -380,9 +380,9 @@ fetch('address_points.geojson')
 
         }
 
-        updateAddressVisibility();
+        //updateAddressVisibility();
 
-        map.on('zoomend', updateAddressVisibility);
+        //map.on('zoomend', updateAddressVisibility);
 
     })
     .catch(error => {
