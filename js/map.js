@@ -338,7 +338,7 @@ fetch('address_points.geojson')
                 return L.marker(latlng, {
                     icon: L.divIcon({
                         className: 'house-number',
-                        html: feature.properties.Number || '',
+                        html: 'ТЕСТ' //feature.properties.Number || '',
                         iconSize: [30, 14]
                     })
                 });
