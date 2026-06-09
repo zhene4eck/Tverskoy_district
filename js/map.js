@@ -157,6 +157,7 @@ fetch('36.geojson')
                 layer.bindPopup(`
                 <div style="
                     width:350px;
+                    box-sizing:border-box;
                     font-family:Segoe UI, Arial, sans-serif;
                 ">
 
@@ -228,7 +229,7 @@ fetch('36.geojson')
                         line-height:1.5;
                         box-sizing:border-box;
                         width:100%;
-                        border-radius:0 8px 8px 0;
+                        overflow-wrap:break-word;
                     ">
                         <b>Подробнее:</b><br>
                         ${p.Full_Name || ''}
