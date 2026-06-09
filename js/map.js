@@ -303,7 +303,7 @@ map.on('zoomend', updateHeritageVisibility);
 
 const bikeParkingIcon = L.icon({
     iconUrl: 'icons/25.svg',
-    iconSize: [35, 35],
+    iconSize: [40, 40],
     iconAnchor: [12, 24],
     popupAnchor: [0, -24]
 });
