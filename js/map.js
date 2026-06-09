@@ -1036,7 +1036,7 @@ fetch('district_boundary.geojson')
                 opacity: 1,
 
                 fillColor: '#fafaf8',
-                fillOpacity: 0.85,
+                fillOpacity: 1,
 
                 dashArray: '12 4 2 4 2 4'
             },
