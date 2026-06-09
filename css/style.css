@@ -68,3 +68,8 @@ body {
         1px -1px 0 white,
        -1px -1px 0 white;
 }
+
+.leaflet-popup-content {
+    margin: 12px;
+    min-width: 350px;
+}
