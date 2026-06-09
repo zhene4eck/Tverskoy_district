@@ -67,10 +67,30 @@ map.getPane('bikeParking').style.zIndex = 300;
 map.getPane('heritage').style.zIndex = 310;
 
 // Подложка
-L.tileLayer(
+const osm = L.tileLayer(
     'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
     {
         attribution: '&copy; OpenStreetMap'
+    }
+);
+
+const satellite = L.tileLayer(
+    'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    {
+        attribution: 'Esri World Imagery'
+    }
+);
+
+osm.addTo(map);
+
+L.control.layers(
+    {
+        'Карта': osm,
+        'Спутник': satellite
+    },
+    null,
+    {
+        collapsed: false
     }
 ).addTo(map);
 
