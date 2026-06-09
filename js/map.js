@@ -83,16 +83,27 @@ const satellite = L.tileLayer(
 
 osm.addTo(map);
 
-L.control.layers(
-    {
-        'Карта': osm,
-        'Спутник': satellite
-    },
-    null,
-    {
-        collapsed: false
-    }
-).addTo(map);
+document.getElementById('osmMap')
+    ?.addEventListener('change', function() {
+
+        map.removeLayer(satellite);
+
+        if (!map.hasLayer(osm)) {
+            map.addLayer(osm);
+        }
+
+    });
+
+document.getElementById('satMap')
+    ?.addEventListener('change', function() {
+
+        map.removeLayer(osm);
+
+        if (!map.hasLayer(satellite)) {
+            map.addLayer(satellite);
+        }
+
+    });
 
 function getHeritageIcon(Subtype, Subsubtype) {
 
