@@ -37,6 +37,7 @@ map.createPane('roads_v4');
 map.createPane('roads_v5');
 map.createPane('roads_v6');
 map.createPane('roads_v7');
+map.createPane('railways');
 map.createPane('buildings');
 map.createPane('addresses');
 map.createPane('stops');
@@ -56,6 +57,7 @@ map.getPane('roads_v4').style.zIndex = 253;
 map.getPane('roads_v3').style.zIndex = 254;
 map.getPane('roads_v1').style.zIndex = 255;
 map.getPane('roads').style.zIndex = 250;
+map.getPane('railways').style.zIndex = 258;
 map.getPane('buildings').style.zIndex = 260;
 map.getPane('addresses').style.zIndex = 270;
 map.getPane('stops').style.zIndex = 280;
@@ -1024,6 +1026,70 @@ fetch('district_boundary.geojson')
     })
     .catch(error => {
         console.error('Ошибка границы района:', error);
+    });
+
+// =======================
+// ПУТИ И СООБЩЕНИЯ
+// =======================
+
+fetch('railways.geojson')
+    .then(response => response.json())
+    .then(data => {
+
+        railwaysLayer = L.geoJSON(data, {
+            pane: 'railways',
+
+            style: function(feature) {
+
+                const code = feature.properties.Code;
+
+                if (code === 'В1') {
+
+                    return {
+                        color: '#5f6368',
+                        weight: 3.5,
+                        opacity: 0.95
+                    };
+
+                }
+
+                else if (code === 'В2') {
+
+                    return {
+                        color: '#c4b27a',
+                        weight: 3,
+                        opacity: 0.95
+                    };
+
+                }
+
+                return {
+                    color: '#808080',
+                    weight: 3,
+                    opacity: 0.9
+                };
+
+            },
+
+            onEachFeature: function(feature, layer) {
+
+                const p = feature.properties;
+
+                layer.bindPopup(`
+                    <div style="font-family:Segoe UI;">
+                        <b>${p['Code OSM'] || 'Пути и сообщения'}</b>
+                    </div>
+                `);
+
+            }
+
+        });
+
+        railwaysLayer.addTo(map);
+
+    })
+    .catch(error => {
+        console.error('Ошибка путей:', error);
     });
 
 // =======================
