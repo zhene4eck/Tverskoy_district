@@ -363,7 +363,7 @@ fetch('bike_routes.geojson')
             pane: 'bikeRoutes',
 
             style: {
-                color: '#5865F2',
+                color: '#5B4BBD',
                 weight: 5,
                 opacity: 0.95
             }
