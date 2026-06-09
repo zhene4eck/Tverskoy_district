@@ -8,6 +8,7 @@ const map = L.map('map').setView(
 map.zoomControl.setPosition('topright');
 
 // Слои
+let railwaysLayer;
 let heritageLayer;
 let bikeRoutesLayer;
 let bikeParkingLayer;
@@ -1168,5 +1169,10 @@ setTimeout(() => {
         ?.addEventListener('change', function() {
             toggleLayer(stopsLayer, this.checked);
         });
+
+    document.getElementById('railwaysCheck')
+    ?.addEventListener('change', function() {
+        toggleLayer(railwaysLayer, this.checked);
+    });
 
 }, 3000);
