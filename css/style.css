@@ -89,12 +89,27 @@ body {
     margin-top: 14px;
 }
 
+.heritage-legend {
+    margin-top: 10px;
+}
+
+.legend-category {
+    margin-top: 10px;
+    margin-bottom: 5px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    color: #2c3e50;
+}
+
 .legend-item {
     display: flex;
     align-items: center;
+
     gap: 8px;
 
-    margin-bottom: 6px;
+    margin-bottom: 5px;
 
     font-size: 11px;
     color: #444;
@@ -103,5 +118,6 @@ body {
 .legend-item img {
     width: 16px;
     height: 16px;
+
     flex-shrink: 0;
 }
