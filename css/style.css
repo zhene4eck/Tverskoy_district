@@ -73,3 +73,14 @@ body {
     margin: 12px;
     min-width: 350px;
 }
+
+.base-layers-group {
+    margin-top: 14px;
+    padding: 10px 12px;
+
+    background: #f8f8f8;
+
+    border-radius: 10px;
+
+    border: 1px solid #f1f1f1;
+}
