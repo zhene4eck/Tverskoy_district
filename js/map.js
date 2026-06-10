@@ -78,11 +78,11 @@ const satellite = L.tileLayer(
 );
 
 const mapbox = L.tileLayer(
-    'https://api.mapbox.com/styles/v1/gleban/cl1i5un29001015pkq2xglz4i/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiZ2xlYmFuIiwiYSI6ImNpdnhlMmJmcjAwMTUyeXBrcDFtMzR2MjIifQ.GKDNdlpl_RBDz5V9CLdmEA',
+    'https://api.mapbox.com/styles/v1/gleban/cl1i5un29001015pkq2xglz4i/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZ2xlYmFuIiwiYSI6ImNpdnhlMmJmcjAwMTUyeXBrcDFtMzR2MjIifQ.GKDNdlpl_RBDz5V9CLdmEA',
     {
         attribution: '© Mapbox',
-        tileSize: 256,
-        zoomOffset: 0
+        tileSize: 512,
+        zoomOffset: -1
     }
 );
 
@@ -138,6 +138,8 @@ document.getElementById('satMap')
             popupAnchor: [0, -22]
         });
     }
+
+    function getHeritageIcon(Subtype, Subsubtype) {
 
     let iconNumber = 1;
 
