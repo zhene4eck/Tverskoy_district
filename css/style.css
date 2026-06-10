@@ -74,13 +74,17 @@ body {
     min-width: 350px;
 }
 
+.theme-layers-group,
 .base-layers-group {
-    margin-top: 14px;
+    margin-top: 12px;
     padding: 10px 12px;
 
-    background: #f8f8f8;
+    background: #fafafa;
 
-    border-radius: 10px;
+    border: 1px solid #f3f3f3;
+    border-radius: 12px;
+}
 
-    border: 1px solid #f1f1f1;
+.base-layers-group {
+    margin-top: 14px;
 }
