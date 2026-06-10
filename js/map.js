@@ -66,13 +66,9 @@ map.getPane('bikeRoutes').style.zIndex = 290;
 map.getPane('bikeParking').style.zIndex = 300;
 map.getPane('heritage').style.zIndex = 310;
 
-// Подложка
-const osm = L.tileLayer(
-    'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-    {
-        attribution: '&copy; OpenStreetMap'
-    }
-);
+// =======================
+// ПОДЛОЖКИ
+// =======================
 
 const satellite = L.tileLayer(
     'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
@@ -81,15 +77,25 @@ const satellite = L.tileLayer(
     }
 );
 
-osm.addTo(map);
+const mapbox = L.tileLayer(
+    'https://api.mapbox.com/styles/v1/gleban/cl1i5un29001015pkq2xglz4i/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiZ2xlYmFuIiwiYSI6ImNpdnhlMmJmcjAwMTUyeXBrcDFtMzR2MjIifQ.GKDNdlpl_RBDz5V9CLdmEA',
+    {
+        attribution: '© Mapbox',
+        tileSize: 256,
+        zoomOffset: 0
+    }
+);
+
+// По умолчанию показываем спутник
+satellite.addTo(map);
 
 document.getElementById('osmMap')
     ?.addEventListener('change', function() {
 
         map.removeLayer(satellite);
 
-        if (!map.hasLayer(osm)) {
-            map.addLayer(osm);
+        if (!map.hasLayer(mapbox)) {
+            map.addLayer(mapbox);
         }
 
     });
@@ -97,17 +103,13 @@ document.getElementById('osmMap')
 document.getElementById('satMap')
     ?.addEventListener('change', function() {
 
-        map.removeLayer(osm);
+        map.removeLayer(mapbox);
 
         if (!map.hasLayer(satellite)) {
             map.addLayer(satellite);
         }
 
     });
-
-function getHeritageIcon(Subtype, Subsubtype) {
-
-    const name = Subsubtype.trim();
 
     // Федеральные объекты
     if (Subtype === 'Федеральный' && name === 'Московский Кремль') {
