@@ -97,7 +97,7 @@ body {
     margin-top: 10px;
     margin-bottom: 5px;
 
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 600;
 
     color: #2c3e50;
@@ -111,13 +111,13 @@ body {
 
     margin-bottom: 5px;
 
-    font-size: 11px;
+    font-size: 15px;
     color: #444;
 }
 
 .legend-item img {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
 
     flex-shrink: 0;
 }
