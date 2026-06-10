@@ -111,6 +111,10 @@ document.getElementById('satMap')
 
     });
 
+function getHeritageIcon(Subtype, Subsubtype) {
+
+    const name = Subsubtype.trim();
+
     // Федеральные объекты
     if (Subtype === 'Федеральный' && name === 'Московский Кремль') {
         return L.icon({
@@ -138,8 +142,6 @@ document.getElementById('satMap')
             popupAnchor: [0, -22]
         });
     }
-
-    function getHeritageIcon(Subtype, Subsubtype) {
 
     let iconNumber = 1;
 
